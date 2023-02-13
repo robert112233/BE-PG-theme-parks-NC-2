@@ -75,27 +75,27 @@ As you can see from the [documentation](https://github.com/datalanche/node-pg-fo
 - An SQL query string, which can contain a placeholder for the formatted values
 - A nested array of the values to be inserted for each record
 
->It's important to note here that `format()` returns a *string*. It does not make the query for us.
+> It's important to note here that `format()` returns a _string_. It does not make the query for us.
 
 #### 4.1
 
 In order to prepare our data for passing into the `format()` function offered by `pg-format`, we must arrange the values from the data into a nested array.
 
-Create a function called `arrangeParksData()`. This will be used as a *utility function* within the `insertParks()` function we will create in the next part of this task.
+Create a function called `arrangeParksData()`. This will be used as a _utility function_ within the `insertParks()` function we will create in the next part of this task.
 
 `arrangeParksData()` should take one argument,`parksData`, which will - eventually - be the`parks` data we have required into the module on Line 1.
 
 It should return a nested array of values from the data to it.
 
 ```JavaScript
-// when passed: 
+// when passed:
 const parks = [
-  { 
+  {
     "park_name": 'Thorpe Park',
     year_opened: 1979,
-    annual_attendance: 1700000 
+    annual_attendance: 1700000
   },
-  { 
+  {
     "park_name": 'Alton Towers',
     year_opened: 1980,
     annual_attendance: 2520000
@@ -104,9 +104,8 @@ const parks = [
 
 
 arrangeParksData(parks)
-// it will return: [[ 'Thorpe Park', 1979, 1700000], ['Alton **Towers', 1980,** 2520000]] 
+// it will return: [[ 'Thorpe Park', 1979, 1700000], ['Alton **Towers', 1980,** 2520000]]
 ```
-
 
 #### 4.2
 
@@ -138,7 +137,7 @@ If your table creation and inserting has worked as expected, this test should pa
 >
 > However, this `park_id` was created as a `SERIAL PRIMARY KEY` when we inserted the `parks` data into our database. So it exists in our database, but not in the local data we are using for seeding the `rides` table.
 >
-> The data we have access to *does* have keys of `park_name` so, in order to be able to insert the rides data into the table we defined earlier, we will need to be able to work out which `park_id` goes with which `park_name`.
+> The data we have access to _does_ have keys of `park_name` so, in order to be able to insert the rides data into the table we defined earlier, we will need to be able to work out which `park_id` goes with which `park_name`.
 >
 > We will need access to the rows that have been inserted to the `parks` table.
 >
@@ -172,9 +171,9 @@ This is a utility function. Write some tests for this function in `utils.test.js
 ```js
 [
   {
-    ride_name: 'Tidal Wave',
+    ride_name: "Tidal Wave",
     year_opened: 2000,
-    park_name: 'Thorpe Park',
+    park_name: "Thorpe Park",
     votes: 1,
   },
 ];
@@ -185,7 +184,7 @@ will become
 ```js
 [
   {
-    ride_name: 'Tidal Wave',
+    ride_name: "Tidal Wave",
     year_opened: 2000,
     park_id: 1,
     votes: 1,
@@ -205,9 +204,9 @@ As before, we should utilise the `format()` function available to us from `pg-fo
 
 Create a utility function to arrange the rides data: `arrangeRidesData()`
 
-It should take one argument, containing rides data, and return a *nested array* to be passed as a second argument into `format()`.
+It should take one argument, containing rides data, and return a _nested array_ to be passed as a second argument into `format()`.
 
-> *Use T.D.D.* :red_square: :green_square: :recycle:
+> _Use T.D.D._ :red_square: :green_square: :recycle:
 
 #### 8.2
 
@@ -221,7 +220,7 @@ This function will do the task of inserting the correct rides data into the data
 
 Now that we should have some rides data stored in our database, you can complete the `selectRidesByParkId` function in `models/rides.js`
 
-> *Although we've just gone through all the effort of converting the `park_name`s to `park_id`s but it turns out our clients will want the names to be sent to them.* :woman_facepalming:
+> _Although we've just gone through all the effort of converting the `park_name`s to `park_id`s but it turns out our clients will want the names to be sent to them._ :woman_facepalming:
 
 ---
 
@@ -236,6 +235,7 @@ Complete the `updateParkById` function in models.js
 Complete the `removeParkById` function in models.js
 
 ---
+
 ---
 
 ## Advanced Tasks
@@ -244,7 +244,7 @@ Complete the `removeParkById` function in models.js
 
 Take a look at the foods and stalls data in the `data` folder, this is a many to many relationship, think about the data types you want to store and which tables you will need to create to build this
 
-> *Hint:* You will need to create three tables if you want to store this without duplicating any information
+> _Hint:_ You will need to create three tables if you want to store this without duplicating any information
 
 Update your seed function to create the tables required to store the stalls and food data
 
@@ -275,6 +275,7 @@ Create and test an `updateStall` model that will add an extra food that stall se
 Create and test a `removeStall` model.
 
 ---
+
 ---
 
 ## Even More Challenges
